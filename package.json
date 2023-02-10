@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@oclif/core": "^2.1.0",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.4",
     "dotenv": "^16.0.1",
@@ -19,6 +20,5 @@
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.1"
-  },
-  "devDependencies": {}
+  }
 }
