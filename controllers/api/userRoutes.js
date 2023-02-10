@@ -1,9 +1,3 @@
-//*
-//* These are the Express routes to load 
-//* various routes related to user login security
-//* all routes have the '/api/users' prefix in the URL
-//*
-// require User model
 const { User } = require('../../models');
 // set up Express router
 const router = require('express').Router();
@@ -32,9 +26,6 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-//* Express route to do user login
-//* from the "login.handlebars" template form
 router.post('/login', async (req, res) => {
   console.log("\n", "\x1b[33m", "Triggered route to login registered User in userRoutes", "\x1b[0m", "\n");
   try {

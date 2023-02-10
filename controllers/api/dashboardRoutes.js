@@ -1,18 +1,10 @@
-//*
-//* These are the Express routes to load 
-//* various routes related to user login security
-//* all routes have the '/api/dashboard' prefix in the URL
-//*
-// require User model
+
 const { User, Post, Comment } = require('../../models');
 // set up Express router
 const router = require('express').Router();
 
 const withAuth = require('../../utils/auth');
 
-//* Express route to get all posts from the logged in user
-//* user_id should match the post data
-//* this is for the user 'Dashboard'
 router.get("/", withAuth, async (req, res) => {
 	console.log("\n", "\x1b[33m", "Route for base Dashboard rendered", "\x1b[0m", "\n");
 	try {
@@ -42,9 +34,7 @@ router.get("/", withAuth, async (req, res) => {
 			},
 		],
 	});
-	// By default Sequelize returns lots of metadata
-    // To turn medatada off, we use the plain: true option
-	// also use 'map' with findAll
+
     const posts = postData.map((data) => data.get({ plain: true }));
 			res.render("dashboard", {
 				posts,
@@ -58,8 +48,6 @@ router.get("/", withAuth, async (req, res) => {
 }
 });
 
-//* this renders the 'New Post' page view
-//* allows the logged in user to enter a new post
 router.get("/new", withAuth, (req, res) => {
 	console.log("\n", "\x1b[33m", "Triggered route for New Posts in dashboardRoutes", "\x1b[0m", "\n");
 	// render the 'New Post' page

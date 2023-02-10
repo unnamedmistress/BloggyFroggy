@@ -1,33 +1,28 @@
-//*
-//* These are the Express routes to load 
-//* various routes related to user Comments on Posts
-//* all routes have the '/api/comment' prefix in the URL
-//*
-// require user model
-const { Comment } = require('../../models');
-// set up Express router
+// This is the code for creating a new comment
+// Only logged-in users can post comments
 const router = require('express').Router();
-// load user auth middleware
 const withAuth = require('../../utils/auth');
+const { Comment } = require('../../models');
 
-//* post a new comment
-//* but only for logged in users
+// This function is called when a user wants to post a new comment
 router.post('/', withAuth, async (req, res) => {
-    console.log("\n", "\x1b[33m", "Route to post new Comment rendered in commentRoutes", "\x1b[0m", "\n");
-    try {
-        if (req.session) {
-            const commentData =  await Comment.create({
-                comment_body: req.body.comment_body,
-                post_id: req.body.post_id,
-                user_id: req.session.user_id,
-            });
-            res.json(commentData);
-        };
-    } catch(err) {
-        console.log(err);
-        res.status(400).json(err);
-        };
+// Check if the user is logged in
+if (req.session) {
+try {
+// Create a new comment in the database
+const commentData = await Comment.create({
+comment_body: req.body.comment_body,
+post_id: req.body.post_id,
+user_id: req.session.user_id,
 });
-
+// Send the new comment data back to the user
+res.json(commentData);
+} catch (err) {
+// If there is an error, log it and send a bad request response
+console.log(err);
+res.status(400).json(err);
+}
+}
+});
 
 module.exports = router;

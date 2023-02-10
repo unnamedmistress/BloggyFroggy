@@ -1,9 +1,3 @@
-//*
-//* These are the 'base' Express routes
-//* all of these load witn only the '/' URL
-//*
-
-// set up Express router
 const router = require('express').Router();
 
 // load the required models
@@ -36,8 +30,7 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
-        // By default Sequelize returns lots of metadata
-        // To turn medatada off, we use the plain: true option
+        
         const posts = postData.map((post) => post.get({ plain: true }));
         // render the Handlebars template for 'homepage' here
         res.render('homepage', {
@@ -87,8 +80,6 @@ router.get("/post/:id", async (req, res) => {
             res.status(404).json({ message: "No post found with this id" });
             return;
         }
-        // By default Sequelize returns lots of metadata
-        // To turn medatada off, we use the plain: true option
         const post = postData.get({ plain: true });
         // render the Handlebars view here
         res.render("post-with-comments", {
@@ -106,8 +97,6 @@ router.get("/post/:id", async (req, res) => {
 //* Express route for user Login
 router.get('/login', (req, res) => {
     console.log("\n", "\x1b[33m", "Route for login rendered in homeRoutes", "\x1b[0m", "\n");
-    // If the user is already logged in, redirect to the homepage
-    // will load if 'req.session.loggedIn' evaluates to TRUE
     if (req.session.loggedIn) {
       res.redirect('/');
       return;
@@ -121,8 +110,7 @@ router.get('/login', (req, res) => {
 //* Express route for user signup
 router.get('/signup', (req, res) => {
     console.log("\n", "\x1b[33m", "Route for sign-up rendered in homeRoutes", "\x1b[0m", "\n");
-    // If the user is already logged in, redirect to the homepage
-    // will load if 'req.session.loggedIn' evaluates to TRUE
+   
     if (req.session.loggedIn) {
       res.redirect('/');
       return;

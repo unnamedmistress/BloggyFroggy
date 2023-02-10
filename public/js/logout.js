@@ -1,21 +1,20 @@
-//*
-//* This is the User logout helper code
-//*
+// This is the code for logging out a user
 
-// event handler for the existing user login form
+// Function to handle the logout process
 const logout = async () => {
-  // the 'fetch' request signals the API to do a logut
+  // Sends a request to the API to log out the user
   const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' }
   });
-  // if the action is succesasful, then navigate back to the homepage
+  // If the logout was successful, go back to the homepage
   if (response.ok) {
-    document.location.replace('/');
+  document.location.replace('/');
   } else {
-    alert('Failed to log out.');
+  // If the logout was not successful, show an alert
+  alert('Failed to log out.');
   }
-};
-
-// add the 'Event Listeners' to the page
-document.querySelector('#logout').addEventListener('click', logout);
+  };
+  
+  // Adds an event listener to the logout button
+  document.querySelector('#logout').addEventListener('click', logout);

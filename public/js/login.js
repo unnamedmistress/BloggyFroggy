@@ -1,33 +1,38 @@
-//*
-//* This is the login helper code
+//* This code helps a user log in
 //*
 
-// event handler for the existing user login form
+// Function that handles the user login form
 const loginFormHandler = async (event) => {
-  // The preventDefault() method of the Event interface
-  // tells the user agent that if the event does not get explicitly handled,
-  // its default action should not be taken as it normally would be.
+  // Prevent the default action of the event
   event.preventDefault();
-  // this code below will remove any leading or trailing spaces
-  // in the 'email' and 'passowrd' fields
+  
+  // Get the email and password from the form
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
-
+  
+  // Make sure both email and password are filled out
   if (email && password) {
-    // the 'fetch' send User login info to the login API
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // Send the email and password to the API for login
+  const response = await fetch('/api/users/login', {
+  method: 'POST',
+  body: JSON.stringify({ email, password }),
+  headers: { 'Content-Type': 'application/json' },
+  });
 
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to log in.');
-    }
+  // If the login was successful, go to the homepage
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    // Show an error message if login failed
+    alert('Failed to log in.');
   }
-};
-
-// add the 'Event Listeners' to the page
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  }
+  };
+  
+  // Listen for submit event on the login form
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  
+  
+  
+  
+  
