@@ -11,8 +11,9 @@
 8. [Tests?](#Tests)
 9. [Questions?](#questions)
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/e60Eswp2EmM/0.jpg)](http://www.youtube.com/watch?v=e60Eswp2EmM "Video Title")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/e60Eswp2EmM/0.jpg)]
 
+# https://techybloggy.herokuapp.com/
 # Title: Tech Blog for people to stay up to date on the lastest tech news.
 ## Description/Problem Solved 
 Enter your thoughts on any tech subject and enter new blogs
