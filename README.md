@@ -11,12 +11,12 @@
 8. [Tests?](#Tests)
 9. [Questions?](#questions)
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/e60Eswp2EmM/0.jpg)]
+![IMAGE ALT TEXT](/BloggyFroggy/assets/images/Screenshot.png)
 
 # https://techybloggy.herokuapp.com/
 # Title: Tech Blog for people to stay up to date on the lastest tech news.
 ## Description/Problem Solved 
-Enter your thoughts on any tech subject and enter new blogs
+Enter your thoughts on any tech subject and read new blogs
 ## Installation 
 Other
 ## License and Link: [MIT](https://opensource.org/licenses/MIT/)
