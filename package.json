@@ -20,6 +20,6 @@
     "express-session": "^1.17.3",
     "heroku": "^7.68.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.1"
+    "sequelize": "^6.28.2"
   }
 }
